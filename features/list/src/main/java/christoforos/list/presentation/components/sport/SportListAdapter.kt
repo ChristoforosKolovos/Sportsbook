@@ -27,7 +27,17 @@ class SportListAdapter(
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(sport: Sport) {
-            SportViewResolver(view as SportView).render(sport, onFavoriteClicked)
+            SportViewResolver(view as SportView).render(sport, onFavoriteClicked) {
+                onExpand(sport)
+            }
+        }
+
+        private fun onExpand(sport: Sport) {
+            val indexOfUpdatedItem = currentList.indexOf(sport)
+            with(currentList[indexOfUpdatedItem]){
+                collapsed = !collapsed
+            }
+            notifyItemChanged(indexOfUpdatedItem)
         }
     }
 

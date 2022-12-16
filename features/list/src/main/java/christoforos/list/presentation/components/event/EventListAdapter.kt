@@ -26,24 +26,28 @@ class EventListAdapter(
 
         fun bind(event: Event) {
             EventViewResolver(view as EventView).render(event) {
-                val eventToUpdate = currentList.firstOrNull { it.id == event.id }
-                eventToUpdate?.let {
-                    it.favorite = !it.favorite
-                }
-
-                val sortedEvents = currentList
-                    .sortedByDescending { it.timestamp }
-                    .sortedByDescending { it.favorite }
-
-                val oldIndex = currentList.indexOf(event)
-                submitList(sortedEvents)
-                val newIndex = currentList.indexOf(event)
-
-                notifyItemChanged(oldIndex)
-                notifyItemChanged(newIndex)
-
-                onFavoriteClicked(event)
+                onFavorite(event)
             }
+        }
+
+        private fun onFavorite(event : Event){
+            val eventToUpdate = currentList.firstOrNull { it.id == event.id }
+            eventToUpdate?.let {
+                it.favorite = !it.favorite
+            }
+
+            val sortedEvents = currentList
+                .sortedByDescending { it.timestamp }
+                .sortedByDescending { it.favorite }
+
+            val oldIndex = currentList.indexOf(event)
+            submitList(sortedEvents)
+            val newIndex = currentList.indexOf(event)
+
+            notifyItemChanged(oldIndex)
+            notifyItemChanged(newIndex)
+
+            onFavoriteClicked(event)
         }
     }
 

@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import christoforos.common.helpers.CustomSnapHelper
 import christoforos.list.databinding.LayoutSportViewBinding
@@ -40,14 +41,6 @@ class SportView(
 
         val snapHelper = CustomSnapHelper()
         snapHelper.attachToRecyclerView(recyclerView)
-
-        binding.title.setOnClickListener {
-            val lp = ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                0
-            )
-            binding.list.layoutParams = lp
-        }
     }
 
     override fun setTitle(title: String) {
@@ -60,6 +53,20 @@ class SportView(
 
     override fun setOnFavoriteClicked(listener: (event: Event) -> Unit) {
         onFavoriteClicked = listener
+    }
+
+    override fun setOnExpandClicked(action: () -> Unit) {
+        binding.title.setOnClickListener {
+            action()
+        }
+    }
+
+    override fun expand() {
+        binding.list.isVisible = true
+    }
+
+    override fun collapse() {
+        binding.list.isVisible = false
     }
 
     private fun favoriteClicked(event: Event) {

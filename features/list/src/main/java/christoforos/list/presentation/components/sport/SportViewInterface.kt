@@ -10,4 +10,9 @@ interface SportViewInterface {
 
     fun setOnFavoriteClicked(listener: (event: Event) -> Unit)
 
+    fun setOnExpandClicked(action: () -> Unit)
+
+    fun expand()
+
+    fun collapse()
 }
