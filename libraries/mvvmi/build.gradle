@@ -1,0 +1,15 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+apply from: "${rootProject.projectDir}/config/gradle/build-scripts/android-library.gradle"
+
+android {
+    namespace 'christoforos.mvvmi'
+}
+
+dependencies {
+    implementation deps.androidx.navigation_components.ui
+    implementation deps.logging.timber
+}

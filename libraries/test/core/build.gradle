@@ -1,0 +1,31 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from: "${rootProject.projectDir}/config/gradle/build-scripts/android-library.gradle"
+
+android {
+    namespace 'christoforos.test.core'
+}
+
+dependencies {
+    api deps.di.hilt.test
+    api deps.test.coroutines
+    api deps.test.junit
+    api deps.test.androidx.espresso.core
+    api deps.test.androidx.core
+    api deps.test.mockk
+    api deps.test.turbine
+    api deps.test.truth
+    api deps.test.assertj
+    debugApi deps.test.androidx.fragment // Once https://issuetracker.google.com/127986458 is fixed this can be api/implementation/testImplementation
+
+    kapt deps.di.hilt.android_compiler
+    implementation deps.di.hilt.android
+    implementation deps.test.androidx.junit
+    implementation deps.androidx.navigation_components.ui
+
+}

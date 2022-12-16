@@ -1,0 +1,23 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from: "${rootProject.projectDir}/config/gradle/build-scripts/android-library.gradle"
+
+android {
+    namespace 'christoforos.api'
+}
+
+dependencies {
+    api deps.http.retrofit.main
+
+    kapt deps.di.hilt.android_compiler
+    implementation deps.di.hilt.android
+    implementation deps.http.retrofit.gson
+    implementation deps.http.retrofit.logging
+    implementation deps.google.gson
+    implementation deps.logging.timber
+}

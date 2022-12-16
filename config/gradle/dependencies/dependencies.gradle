@@ -1,0 +1,71 @@
+ext.deps = [
+        'module'  : [
+                'feature': [
+                        'list'        : project('features:list'),
+                ],
+                'library': [
+                        'ui'        : project('libraries:ui'),
+                        'navigation': project('libraries:navigation'),
+                        'mvvmi'     : project('libraries:mvvmi'),
+                        'api'       : project('libraries:api'),
+                        'common'    : project('libraries:common'),
+                        'test'      : [
+                                'core' : project('libraries:test:core'),
+                                'fakes': project('libraries:test:fakes')
+                        ]
+                ]
+        ],
+        'kotlin'  : [
+                'coroutines'        : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
+                'coroutines_android': "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines",
+        ],
+        'androidx': [
+                'core_ktx'             : "androidx.core:core-ktx:$versions.core_ktx",
+                'navigation_components': [
+                        'fragment': "androidx.navigation:navigation-fragment-ktx:$versions.navigation_components",
+                        'ui'      : "androidx.navigation:navigation-ui-ktx:$versions.navigation_components"
+                ],
+                'constraint_layout' : "androidx.constraintlayout:constraintlayout:$versions.constraint_layout",
+                'appcompat': "androidx.appcompat:appcompat:$versions.appcompat",
+                'recyclerview' : "androidx.recyclerview:recyclerview:$versions.recyclerview"
+        ],
+        'google'  : [
+                'material': "com.google.android.material:material:$versions.material",
+                'gson'    : "com.google.code.gson:gson:$versions.gson",
+        ],
+        'di'      : [
+                'hilt': [
+                        agp             : "com.google.dagger:hilt-android-gradle-plugin:$versions.hilt",
+                        android         : "com.google.dagger:hilt-android:$versions.hilt",
+                        android_compiler: "com.google.dagger:hilt-android-compiler:$versions.hilt",
+                        test            : "com.google.dagger:hilt-android-testing:$versions.hilt"
+                ]
+        ],
+        'test'    : [
+                'junit'     : "junit:junit:$versions.junit",
+                'androidx'  : [
+                        'core'    : "androidx.test:core-ktx:$versions.androidx_test_core",
+                        'junit'   : "androidx.test.ext:junit:$versions.androidx_test_junit",
+                        'fragment': "androidx.fragment:fragment-testing:$versions.fragment",
+                        'espresso': [
+                                'core': "androidx.test.espresso:espresso-core:$versions.espresso",
+                        ],
+                ],
+                'mockk'     : "io.mockk:mockk:$versions.mockk",
+                'coroutines': "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutines",
+                'turbine'   : "app.cash.turbine:turbine:$versions.turbine",
+                'truth'     : "com.google.truth:truth:$versions.truth",
+                'assertj'   : "org.assertj:assertj-core:$versions.assertj"
+        ],
+        'logging' : [
+                'timber': "com.jakewharton.timber:timber:$versions.timber"
+        ],
+        'http'    : [
+                'retrofit': [
+                        'main'   : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+                        'gson'   : "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+                        'logging': "com.squareup.okhttp3:logging-interceptor:$versions.okhttp_logging"
+                ]
+
+        ]
+]

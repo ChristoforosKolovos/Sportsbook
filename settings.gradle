@@ -1,0 +1,24 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "Sportsbook"
+include ':app'
+include ':libraries:api'
+include ':libraries:common'
+include ':libraries:mvvmi'
+include ':libraries:navigation'
+include ':libraries:test:core'
+include ':libraries:test:fakes'
+include ':libraries:ui'
+include ':features:list'

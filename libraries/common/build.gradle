@@ -1,0 +1,15 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+apply from: "${rootProject.projectDir}/config/gradle/build-scripts/android-library.gradle"
+
+android {
+    namespace 'christoforos.common'
+}
+
+dependencies {
+    implementation deps.http.retrofit.main
+    implementation deps.androidx.recyclerview
+}

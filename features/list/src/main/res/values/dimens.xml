@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="event_container_height">200dp</dimen>
+    <dimen name="event_container_width">150dp</dimen>
+
+</resources>

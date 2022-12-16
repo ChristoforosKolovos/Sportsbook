@@ -1,0 +1,13 @@
+<resources>
+    <dimen name="text_size_small_2">10sp</dimen>
+    <dimen name="text_size_small_1">12sp</dimen>
+    <dimen name="text_size_regular_3">14sp</dimen>
+    <dimen name="text_size_regular_2">16sp</dimen>
+    <dimen name="text_size_regular_1">18sp</dimen>
+    <dimen name="text_size_h6">20sp</dimen>
+    <dimen name="text_size_h5">24sp</dimen>
+    <dimen name="text_size_h4">34sp</dimen>
+    <dimen name="text_size_h3">48sp</dimen>
+    <dimen name="text_size_h2">60sp</dimen>
+    <dimen name="text_size_h1">96sp</dimen>
+</resources>
