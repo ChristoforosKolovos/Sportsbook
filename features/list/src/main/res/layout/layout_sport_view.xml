@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/semidark"
         android:orientation="horizontal"
-
+        android:layout_marginTop="@dimen/spacing_2x"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -22,6 +22,7 @@
             android:id="@+id/icon"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/icon_size"
+            android:adjustViewBounds="true"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/spacing_1x"
             android:rotation="180"
@@ -38,14 +39,15 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_regular_2"
+            android:textSize="@dimen/text_size_regular_3"
             android:textStyle="bold"
             tools:text="This is a really really really long title" />
 
         <ImageView
             android:id="@+id/arrow"
-            android:layout_width="@dimen/arrow_size"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/arrow_size"
+            android:adjustViewBounds="true"
             android:layout_gravity="center"
             android:layout_marginRight="@dimen/spacing_1x"
             android:src="@drawable/arrow"

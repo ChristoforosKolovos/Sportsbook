@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(christoforos.ui.R.style.AppTheme)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }

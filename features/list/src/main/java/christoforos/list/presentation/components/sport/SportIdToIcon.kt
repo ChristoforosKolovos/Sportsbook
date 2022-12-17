@@ -22,7 +22,6 @@ object EventIconUtils {
         "FUTS" to R.drawable.futs,
         "GOLF" to R.drawable.golf,
         "HAND" to R.drawable.hand,
-        "ICE" to R.drawable.ice,
         "LARC" to R.drawable.larc,
         "MMA" to R.drawable.mma,
         "MOTO" to R.drawable.moto,
