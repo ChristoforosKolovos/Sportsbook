@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/spacing_0_5x"
     android:paddingTop="@dimen/spacing_2x"
     android:paddingRight="@dimen/spacing_0_5x"
-    android:paddingBottom="@dimen/spacing_4x">
+    android:paddingBottom="@dimen/spacing_2x">
 
     <TextView
         android:id="@+id/time"
@@ -50,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/favorite"
-        tools:text="Barcelonaaaaaaaa" />
+        tools:text="Barcelona" />
 
     <TextView
         android:id="@+id/name2"
@@ -67,6 +67,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name1"
-        tools:text="Juventussssssssssss" />
+        tools:text="Juventus" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
