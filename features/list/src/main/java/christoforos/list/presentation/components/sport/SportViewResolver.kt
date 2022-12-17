@@ -2,6 +2,7 @@ package christoforos.list.presentation.components.sport
 
 import christoforos.list.domain.models.Event
 import christoforos.list.domain.models.Sport
+import christoforos.list.presentation.components.event.EventIconUtils.sportIdToResourceId
 
 class SportViewResolver(private val view: SportViewInterface) {
 
@@ -15,5 +16,6 @@ class SportViewResolver(private val view: SportViewInterface) {
         view.setOnFavoriteClicked(onFavoriteClicked)
         view.setOnExpandClicked(onExpandClicked)
         if (sport.collapsed) view.collapse() else view.expand()
+        view.setIcon(sportIdToResourceId(sport.id))
     }
 }
