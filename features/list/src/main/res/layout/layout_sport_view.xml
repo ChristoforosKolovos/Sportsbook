@@ -11,9 +11,9 @@
         android:id="@+id/header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_2x"
         android:background="@color/semidark"
         android:orientation="horizontal"
-        android:layout_marginTop="@dimen/spacing_2x"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -22,9 +22,9 @@
             android:id="@+id/icon"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/icon_size"
-            android:adjustViewBounds="true"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/spacing_1x"
+            android:adjustViewBounds="true"
             android:rotation="180"
             android:src="@drawable/circle"
             tools:ignore="ContentDescription" />
@@ -47,9 +47,9 @@
             android:id="@+id/arrow"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/arrow_size"
-            android:adjustViewBounds="true"
             android:layout_gravity="center"
             android:layout_marginRight="@dimen/spacing_1x"
+            android:adjustViewBounds="true"
             android:src="@drawable/arrow"
             app:tint="@color/light"
             tools:ignore="ContentDescription" />
@@ -61,6 +61,20 @@
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header" />
+
+    <TextView
+        android:id="@+id/noEvents"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_6x"
+        android:gravity="center"
+        android:text="@string/no_events"
+        android:textColor="@color/tone"
+        android:textSize="@dimen/text_size_regular_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header" />
 

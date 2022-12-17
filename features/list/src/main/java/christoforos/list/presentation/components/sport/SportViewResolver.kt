@@ -1,5 +1,6 @@
 package christoforos.list.presentation.components.sport
 
+import christoforos.common.utils.StringConstants.DOTS
 import christoforos.list.domain.models.Event
 import christoforos.list.domain.models.Sport
 import christoforos.list.presentation.components.sport.EventIconUtils.sportIdToResourceId
@@ -7,40 +8,41 @@ import christoforos.list.presentation.components.sport.EventIconUtils.sportIdToR
 class SportViewResolver(
     private val view: SportViewInterface,
     private val sport: Sport,
-    private val onFavoriteClicked: (event: Event) -> Unit,
-    private val onExpandClicked: () -> Unit
+    onFavoriteClicked: (event: Event) -> Unit,
+    onExpandClicked: () -> Unit
 ) {
 
     init {
+        view.setOnFavoriteClicked(onFavoriteClicked)
+        view.setOnExpandClicked(onExpandClicked)
+        view.setIcon(sportIdToResourceId(sport.id))
         setTitle()
         fillList()
-        setOnFavoriteClicked()
-        setOnExpandClicked()
         setExpandedOrCollapsed()
-        setIcon()
     }
 
     private fun setTitle() {
-        sport.description?.let { view.setTitle(it) }
+        sport.description?.let {
+            view.setTitle(it)
+        } ?: kotlin.run {
+            view.setTitle(DOTS)
+        }
     }
 
     private fun fillList() {
-        sport.events?.let { view.fillList(it) }
-    }
+        val events = sport.events
+        if (events.isNullOrEmpty()) {
+            view.showNoEvents()
+        } else {
+            view.setEvents(events)
+        }
 
-    private fun setOnFavoriteClicked() {
-        view.setOnFavoriteClicked(onFavoriteClicked)
-    }
-
-    private fun setOnExpandClicked() {
-        view.setOnExpandClicked(onExpandClicked)
     }
 
     private fun setExpandedOrCollapsed() {
-        if (sport.collapsed) view.collapse() else view.expand()
-    }
-
-    private fun setIcon() {
-        view.setIcon(sportIdToResourceId(sport.id))
+        if (sport.collapsed)
+            view.collapse()
+        else
+            view.expand()
     }
 }

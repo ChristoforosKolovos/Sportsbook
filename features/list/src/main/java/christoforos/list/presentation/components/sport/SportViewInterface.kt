@@ -6,7 +6,9 @@ interface SportViewInterface {
 
     fun setTitle(title: String)
 
-    fun fillList(events: List<Event>)
+    fun setEvents(events: List<Event>)
+
+    fun showNoEvents()
 
     fun setOnFavoriteClicked(listener: (event: Event) -> Unit)
 

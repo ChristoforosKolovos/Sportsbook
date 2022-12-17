@@ -43,9 +43,18 @@ class SportView(
         binding.title.text = title
     }
 
-    override fun fillList(events: List<Event>) {
+    override fun setEvents(events: List<Event>) {
+        binding.noEvents.isVisible = false
+        binding.list.isVisible = true
+
         eventListAdapter.submitList(events)
     }
+
+    override fun showNoEvents() {
+        binding.noEvents.isVisible = true
+        binding.list.isVisible = false
+    }
+
 
     override fun setOnFavoriteClicked(listener: (event: Event) -> Unit) {
         onFavoriteClicked = listener
