@@ -27,6 +27,14 @@ import christoforos.ui.R as UI_R
 @AndroidEntryPoint
 class ListFragment : Fragment() {
 
+    companion object {
+        private const val ALPHA_FULL = 1f
+        private const val ALPHA_NO = 0f
+        private const val SHOW_ANIM_DURATION = 300L
+        private const val SHOW_ANIM_TRANSLATION_Y_START = -100f
+        private const val SHOW_ANIM_TRANSLATION_Y_END = -0f
+    }
+
     @Inject
     lateinit var navigatorProvider: NavigatorProvider
     private lateinit var binding: FragmentListBinding
@@ -162,12 +170,12 @@ class ListFragment : Fragment() {
 
     private fun View.showWithAnimation() {
         isVisible = true
-        alpha = 0f
-        translationY = -100f
+        alpha = ALPHA_NO
+        translationY = SHOW_ANIM_TRANSLATION_Y_START
         animate()
-            .alpha(1f)
-            .translationY(0f)
-            .setDuration(300).start()
+            .alpha(ALPHA_FULL)
+            .translationY(SHOW_ANIM_TRANSLATION_Y_END)
+            .setDuration(SHOW_ANIM_DURATION).start()
     }
 
 }
