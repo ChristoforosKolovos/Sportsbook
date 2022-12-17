@@ -5,6 +5,8 @@ import android.os.CountDownTimer
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+import christoforos.common.utils.DateFormatConstants.TIME_FORMAT
+import christoforos.common.utils.StringConstants.SPACED_DASH
 import christoforos.list.R
 import christoforos.list.databinding.LayoutEventViewBinding
 import java.text.SimpleDateFormat
@@ -15,11 +17,6 @@ class EventView(
     context: Context,
     attrs: AttributeSet?
 ) : ConstraintLayout(context, attrs), EventViewInterface {
-
-    companion object {
-        private const val TIME_FORMAT = "hh:mm:ss"
-        private const val DELIMITER = " - "
-    }
 
     private val binding: LayoutEventViewBinding
     private var timer: CountDownTimer? = null
@@ -54,7 +51,7 @@ class EventView(
     }
 
     override fun setNames(description: String) {
-        val names = description.split(DELIMITER)
+        val names = description.split(SPACED_DASH)
 
         with(binding) {
             if (names.size > 1) {

@@ -6,7 +6,6 @@ sealed interface Outcome<out T> {
 
     sealed interface Error : Outcome<Nothing> {
         data class GeneralError(val message: String? = null) : Error
-        data class DatabaseError(val message: String? = null) : Error
         data class ApiError(val message: String? = null) : Error
     }
 
