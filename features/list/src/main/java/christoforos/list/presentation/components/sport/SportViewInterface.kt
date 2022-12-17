@@ -16,5 +16,5 @@ interface SportViewInterface {
 
     fun collapse()
 
-    fun setIcon(resId: Int?)
+    fun setIcon(resId: Int)
 }

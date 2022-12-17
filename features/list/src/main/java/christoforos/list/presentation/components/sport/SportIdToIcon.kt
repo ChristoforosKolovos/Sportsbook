@@ -1,10 +1,14 @@
-package christoforos.list.presentation.components.event
+package christoforos.list.presentation.components.sport
 
 import christoforos.ui.R
 
 object EventIconUtils {
 
-    fun sportIdToResourceId(eventId: String?) = eventIds[eventId]
+    fun sportIdToResourceId(eventId: String?): Int {
+        return eventIds[eventId] ?: run {
+            R.drawable.circle
+        }
+    }
 
     private val eventIds = hashMapOf(
         "AMFO" to R.drawable.amfo,

@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import christoforos.list.databinding.LayoutSportViewBinding
 import christoforos.list.domain.models.Event
 import christoforos.list.presentation.components.event.EventListAdapter
-import christoforos.ui.R
 
 class SportView(
     context: Context,
@@ -68,12 +67,8 @@ class SportView(
         binding.arrow.rotation = 180f
     }
 
-    override fun setIcon(resId: Int?) {
-        resId?.let {
-            binding.icon.setImageResource(it)
-        } ?: run {
-            binding.icon.setImageResource(R.drawable.circle)
-        }
+    override fun setIcon(resId: Int) {
+        binding.icon.setImageResource(resId)
     }
 
     private fun favoriteClicked(event: Event) {
