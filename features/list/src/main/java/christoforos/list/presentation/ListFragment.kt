@@ -47,26 +47,30 @@ class ListFragment : Fragment() {
 
         navigator = navigatorProvider.getNavigator(this)
 
-        setupViews()
+        setupRecyclerViews()
+        setupSwipeToRefresh()
+        setupViewListeners()
         setupObservers()
     }
 
-    private fun setupViews() {
-        setupRecyclerViews()
-        setupSwipeToRefresh()
-
-        binding.favorites.setOnClickListener {
-            onFavoritesClicked()
-        }
-        binding.settings.setOnClickListener {
-            onSettingsClicked()
+    private fun setupViewListeners() {
+        with(binding) {
+            favorites.setOnClickListener {
+                //todo
+            }
+            settings.setOnClickListener {
+                //todo
+            }
+            retry.setOnClickListener {
+                viewModel.sendEvent(ListContract.Event.GetData)
+            }
         }
     }
 
     private fun setupSwipeToRefresh() {
         with(binding.swipeContainer) {
             setOnRefreshListener {
-                viewModel.sendEvent(ListContract.Event.RefreshData)
+                viewModel.sendEvent(ListContract.Event.GetData)
             }
             setColorSchemeResources(UI_R.color.dark)
         }
@@ -109,6 +113,9 @@ class ListFragment : Fragment() {
 
     private fun renderErrorState() {
         with(binding) {
+            retry.showWithAnimation()
+            error.showWithAnimation()
+            noResults.isVisible = false
             resultsList.isVisible = false
             swipeContainer.isRefreshing = false
         }
@@ -116,6 +123,9 @@ class ListFragment : Fragment() {
 
     private fun renderLoadingState() {
         with(binding) {
+            retry.isVisible = false
+            error.isVisible = false
+            noResults.isVisible = false
             resultsList.isVisible = false
             swipeContainer.isRefreshing = true
         }
@@ -123,25 +133,24 @@ class ListFragment : Fragment() {
 
     private fun renderNoResultsState() {
         with(binding) {
+            retry.showWithAnimation()
+            error.isVisible = false
+            noResults.showWithAnimation()
             resultsList.isVisible = false
             swipeContainer.isRefreshing = false
+
         }
     }
 
     private fun renderResultsState(sports: List<Sport>) {
         with(binding) {
-            resultsList.isVisible = true
+            retry.isVisible = false
+            error.isVisible = false
+            noResults.isVisible = false
+            resultsList.showWithAnimation()
             swipeContainer.isRefreshing = false
         }
         sportListAdapter.submitList(sports)
-    }
-
-    private fun onFavoritesClicked() {
-        //todo
-    }
-
-    private fun onSettingsClicked() {
-        //todo
     }
 
     private fun showDialog(text: String) {
@@ -152,6 +161,16 @@ class ListFragment : Fragment() {
             create()
             show()
         }
+    }
+
+    private fun View.showWithAnimation() {
+        isVisible = true
+        alpha = 0f
+        translationY = -100f
+        animate()
+            .alpha(1f)
+            .translationY(0f)
+            .setDuration(300).start()
     }
 
 }

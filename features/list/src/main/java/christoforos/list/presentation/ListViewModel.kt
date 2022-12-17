@@ -24,7 +24,7 @@ class ListViewModel @Inject constructor(
     override suspend fun handleEvent(event: ListContract.Event) {
         when (event) {
             is ListContract.Event.OnFavoriteEvent -> handleFavoriteEventRequest(event.event)
-            ListContract.Event.RefreshData -> getSports()
+            ListContract.Event.GetData -> getSports()
         }
     }
 
@@ -62,7 +62,6 @@ class ListViewModel @Inject constructor(
                     }
                 }
         }
-        //todo handle network error
     }
 
     private fun handleFavoriteEventRequest(event: Event) {

@@ -72,4 +72,61 @@
             android:layout_height="match_parent" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+    <TextView
+        android:id="@+id/noResults"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_6x"
+        android:layout_marginEnd="@dimen/spacing_6x"
+        android:layout_marginBottom="@dimen/spacing_1x"
+        android:gravity="center"
+        android:text="@string/no_results"
+        android:textColor="@color/tone"
+        android:textSize="@dimen/text_size_regular_2"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_6x"
+        android:layout_marginEnd="@dimen/spacing_6x"
+        android:layout_marginBottom="@dimen/spacing_1x"
+        android:gravity="center"
+        android:text="@string/error"
+        android:textColor="@color/error"
+        android:textSize="@dimen/text_size_regular_2"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/retry"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_1x"
+        android:text="@string/try_again"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_small_1"
+        app:icon="@drawable/refresh"
+        app:iconSize="@dimen/retry_icon_size"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline"
+        app:strokeColor="@color/white"
+        app:strokeWidth="@dimen/retry_button_stroke_width" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

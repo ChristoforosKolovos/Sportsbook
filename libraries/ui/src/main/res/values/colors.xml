@@ -7,4 +7,5 @@
     <color name="tone">#09959F</color>
     <color name="yellow">#F2D013</color>
     <color name="white">#F5F7F8</color>
+    <color name="error">#CC543F</color>
 </resources>
