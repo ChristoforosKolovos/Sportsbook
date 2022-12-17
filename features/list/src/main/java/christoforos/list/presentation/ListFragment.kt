@@ -58,9 +58,6 @@ class ListFragment : Fragment() {
             favorites.setOnClickListener {
                 //todo
             }
-            settings.setOnClickListener {
-                //todo
-            }
             retry.setOnClickListener {
                 viewModel.sendEvent(ListContract.Event.GetData)
             }

@@ -28,32 +28,15 @@
             tools:ignore="ContentDescription" />
 
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/favorites"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center">
-
-            <ImageView
-                android:id="@+id/favorites"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/topbar_button_size"
-                android:layout_gravity="left|center"
-                android:layout_marginEnd="@dimen/spacing_2x"
-                android:adjustViewBounds="true"
-                android:src="@drawable/topbar_favorite_selector"
-                tools:ignore="ContentDescription" />
-
-            <ImageView
-                android:id="@+id/settings"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/topbar_button_size"
-                android:layout_gravity="left|center"
-                android:layout_marginEnd="@dimen/spacing_2x"
-                android:adjustViewBounds="true"
-                android:src="@drawable/topbar_settings_selector"
-                tools:ignore="ContentDescription" />
-
-        </LinearLayout>
+            android:layout_height="@dimen/topbar_button_size"
+            android:layout_gravity="right|center"
+            android:layout_marginEnd="@dimen/spacing_2x"
+            android:adjustViewBounds="true"
+            android:src="@drawable/topbar_favorite_selector"
+            tools:ignore="ContentDescription" />
 
     </FrameLayout>
 
