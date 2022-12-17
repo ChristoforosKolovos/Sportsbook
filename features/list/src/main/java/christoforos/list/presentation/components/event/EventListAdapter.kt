@@ -25,14 +25,15 @@ class EventListAdapter(
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(event: Event) {
-            EventViewResolver(view as EventView).render(event) {
+            EventViewResolver(view as EventView, event) {
                 onFavorite(event)
             }
         }
 
-        private fun onFavorite(event : Event){
-            val eventToUpdate = currentList.firstOrNull { it.id == event.id }
-            eventToUpdate?.let {
+        private fun onFavorite(event: Event) {
+            currentList.firstOrNull {
+                it.id == event.id
+            }?.let {
                 it.favorite = !it.favorite
             }
 
@@ -40,12 +41,9 @@ class EventListAdapter(
                 .sortedByDescending { it.timestamp }
                 .sortedByDescending { it.favorite }
 
-            val oldIndex = currentList.indexOf(event)
             submitList(sortedEvents)
-            val newIndex = currentList.indexOf(event)
 
-            notifyItemChanged(oldIndex)
-            notifyItemChanged(newIndex)
+            notifyItemChanged(currentList.indexOf(event))
 
             onFavoriteClicked(event)
         }

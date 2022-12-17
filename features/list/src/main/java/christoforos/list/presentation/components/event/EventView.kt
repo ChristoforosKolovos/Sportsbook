@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import christoforos.common.utils.DateFormatConstants.TIME_FORMAT
-import christoforos.common.utils.StringConstants.SPACED_DASH
 import christoforos.list.R
 import christoforos.list.databinding.LayoutEventViewBinding
 import java.text.SimpleDateFormat
@@ -45,26 +44,17 @@ class EventView(
         }.start()
     }
 
-    private fun getMillisUntilTime(time: Long): Long {
-        val currentTime = (System.currentTimeMillis() / 1000)
-        return time - currentTime
+    override fun setUnknownTime(string: String) {
+        binding.time.isEnabled = true
+        binding.time.text = string
     }
 
-    override fun setNames(description: String) {
-        val names = description.split(SPACED_DASH)
+    override fun setFirstName(name: String) {
+        binding.name1.text = name
+    }
 
-        with(binding) {
-            if (names.size > 1) {
-                name1.text = names[0]
-                name2.text = names[1]
-            } else if (names.isNotEmpty()) {
-                name1.text = names[0]
-                name2.text = context.resources.getString(R.string.dots)
-            } else {
-                name1.text = context.resources.getString(R.string.dots)
-                name2.text = context.resources.getString(R.string.dots)
-            }
-        }
+    override fun setSecondName(name: String) {
+        binding.name2.text = name
     }
 
     override fun setOnFavoriteClicked(action: () -> Unit) {
@@ -81,6 +71,11 @@ class EventView(
                 setImageResource(UI_R.drawable.not_favorite_selector)
             }
         }
+    }
+
+    private fun getMillisUntilTime(time: Long): Long {
+        val currentTime = (System.currentTimeMillis() / 1000)
+        return time - currentTime
     }
 
 }
