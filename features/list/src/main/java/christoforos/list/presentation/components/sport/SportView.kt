@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import christoforos.common.helpers.CustomSnapHelper
 import christoforos.list.databinding.LayoutSportViewBinding
 import christoforos.list.domain.models.Event
 import christoforos.list.presentation.components.event.EventListAdapter
@@ -38,9 +37,6 @@ class SportView(
                 LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
             adapter = eventListAdapter
         }
-
-        val snapHelper = CustomSnapHelper()
-        snapHelper.attachToRecyclerView(recyclerView)
     }
 
     override fun setTitle(title: String) {
@@ -56,17 +52,19 @@ class SportView(
     }
 
     override fun setOnExpandClicked(action: () -> Unit) {
-        binding.title.setOnClickListener {
+        binding.header.setOnClickListener {
             action()
         }
     }
 
     override fun expand() {
         binding.list.isVisible = true
+        binding.arrow.rotation = 0f
     }
 
     override fun collapse() {
         binding.list.isVisible = false
+        binding.arrow.rotation = 180f
     }
 
     private fun favoriteClicked(event: Event) {

@@ -9,7 +9,7 @@ class EventViewResolver(private val view: EventViewInterface) {
         onFavoriteClicked: () -> Unit
     ) {
         event.timestamp?.let { view.setTime(it) }
-        event.description?.let { view.setDescription(it) }
+        event.description?.let { view.setNames(it) }
         view.setFavorite(event.favorite)
         view.setOnFavoriteClicked(onFavoriteClicked)
     }

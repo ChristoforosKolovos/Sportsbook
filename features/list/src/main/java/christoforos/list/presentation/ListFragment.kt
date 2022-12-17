@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -51,7 +52,15 @@ class ListFragment : Fragment() {
 
     private fun setupViews() {
         setupRecyclerViews()
+
+        binding.favorites.setOnClickListener {
+            onFavoritesClicked()
+        }
+        binding.settings.setOnClickListener {
+            onSettingsClicked()
+        }
     }
+
 
     private fun setupRecyclerViews() {
         val recyclerView = binding.resultsList
@@ -89,23 +98,35 @@ class ListFragment : Fragment() {
 
     private fun renderErrorState() {
         with(binding) {
+            loading.isVisible = false
         }
     }
 
     private fun renderLoadingState() {
         with(binding) {
+            loading.isVisible = true
         }
     }
 
     private fun renderNoResultsState() {
         with(binding) {
+            loading.isVisible = false
         }
     }
 
     private fun renderResultsState(sports: List<Sport>) {
         with(binding) {
+            loading.isVisible = false
         }
         sportListAdapter.submitList(sports)
+    }
+
+    private fun onFavoritesClicked() {
+        //todo
+    }
+
+    private fun onSettingsClicked() {
+        //todo
     }
 
     private fun showDialog(text: String) {

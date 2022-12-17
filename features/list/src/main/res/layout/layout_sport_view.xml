@@ -3,27 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/dark">
 
-    <TextView
-        android:id="@+id/title"
+
+    <LinearLayout
+        android:id="@+id/header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_2x"
-        android:background="@color/colorPrimary"
-        android:textColor="@color/primary_light"
-        android:textSize="@dimen/text_size_h6"
+        android:background="@color/semidark"
+        android:orientation="horizontal"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="title" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/icon_size"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/spacing_1x"
+            android:rotation="180"
+            android:src="@drawable/circle"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/spacing_1x"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_regular_2"
+            android:textStyle="bold"
+            tools:text="This is a really really really long title" />
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="@dimen/arrow_size"
+            android:layout_height="@dimen/arrow_size"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/spacing_1x"
+            android:src="@drawable/arrow"
+            app:tint="@color/light"
+            tools:ignore="ContentDescription" />
+
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
-        android:paddingLeft="@dimen/spacing_2x"
         android:id="@+id/list"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/header" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

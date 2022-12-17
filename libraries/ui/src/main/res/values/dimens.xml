@@ -10,4 +10,5 @@
     <dimen name="text_size_h3">48sp</dimen>
     <dimen name="text_size_h2">60sp</dimen>
     <dimen name="text_size_h1">96sp</dimen>
+    <dimen name="topbar_height">60dp</dimen>
 </resources>
