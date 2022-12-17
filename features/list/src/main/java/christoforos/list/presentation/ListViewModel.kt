@@ -24,6 +24,7 @@ class ListViewModel @Inject constructor(
     override suspend fun handleEvent(event: ListContract.Event) {
         when (event) {
             is ListContract.Event.OnFavoriteEvent -> handleFavoriteEventRequest(event.event)
+            ListContract.Event.RefreshData -> getSports()
         }
     }
 

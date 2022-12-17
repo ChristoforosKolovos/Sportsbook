@@ -23,6 +23,7 @@ import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 import christoforos.ui.R as UI_R
 
+
 @AndroidEntryPoint
 class ListFragment : Fragment() {
 
@@ -52,12 +53,22 @@ class ListFragment : Fragment() {
 
     private fun setupViews() {
         setupRecyclerViews()
+        setupSwipeToRefresh()
 
         binding.favorites.setOnClickListener {
             onFavoritesClicked()
         }
         binding.settings.setOnClickListener {
             onSettingsClicked()
+        }
+    }
+
+    private fun setupSwipeToRefresh() {
+        with(binding.swipeContainer) {
+            setOnRefreshListener {
+                viewModel.sendEvent(ListContract.Event.RefreshData)
+            }
+            setColorSchemeResources(UI_R.color.dark)
         }
     }
 
@@ -98,25 +109,29 @@ class ListFragment : Fragment() {
 
     private fun renderErrorState() {
         with(binding) {
-            loading.isVisible = false
+            resultsList.isVisible = false
+            swipeContainer.isRefreshing = false
         }
     }
 
     private fun renderLoadingState() {
         with(binding) {
-            loading.isVisible = true
+            resultsList.isVisible = false
+            swipeContainer.isRefreshing = true
         }
     }
 
     private fun renderNoResultsState() {
         with(binding) {
-            loading.isVisible = false
+            resultsList.isVisible = false
+            swipeContainer.isRefreshing = false
         }
     }
 
     private fun renderResultsState(sports: List<Sport>) {
         with(binding) {
-            loading.isVisible = false
+            resultsList.isVisible = true
+            swipeContainer.isRefreshing = false
         }
         sportListAdapter.submitList(sports)
     }

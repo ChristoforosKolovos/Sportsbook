@@ -15,6 +15,7 @@ object ListContract {
 
     sealed interface Event : UiEvent {
         data class OnFavoriteEvent(val event: SportEvent) : Event
+        object RefreshData : Event
     }
 
     data class State(

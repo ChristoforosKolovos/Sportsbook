@@ -25,9 +25,10 @@ ext.deps = [
                         'fragment': "androidx.navigation:navigation-fragment-ktx:$versions.navigation_components",
                         'ui'      : "androidx.navigation:navigation-ui-ktx:$versions.navigation_components"
                 ],
-                'constraint_layout' : "androidx.constraintlayout:constraintlayout:$versions.constraint_layout",
-                'appcompat': "androidx.appcompat:appcompat:$versions.appcompat",
-                'recyclerview' : "androidx.recyclerview:recyclerview:$versions.recyclerview"
+                'constraint_layout'    : "androidx.constraintlayout:constraintlayout:$versions.constraint_layout",
+                'appcompat'            : "androidx.appcompat:appcompat:$versions.appcompat",
+                'recyclerview'         : "androidx.recyclerview:recyclerview:$versions.recyclerview",
+                'swiperefreshlayout'   : "androidx.swiperefreshlayout:swiperefreshlayout:$versions.swiperefreshlayout"
         ],
         'google'  : [
                 'material': "com.google.android.material:material:$versions.material",

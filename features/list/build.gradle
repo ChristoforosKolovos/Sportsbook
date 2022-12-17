@@ -21,6 +21,7 @@ dependencies {
     implementation deps.di.hilt.android
     implementation deps.androidx.navigation_components.fragment
     implementation deps.androidx.navigation_components.ui
+    implementation deps.androidx.swiperefreshlayout
 
     //libraries
     implementation deps.module.library.navigation
