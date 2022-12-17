@@ -12,6 +12,8 @@ interface SportViewInterface {
 
     fun setOnFavoriteClicked(listener: (event: Event) -> Unit)
 
+    fun setOnDataChanged(listener: (data: List<Event>) -> Unit)
+
     fun setOnExpandClicked(action: () -> Unit)
 
     fun expand()

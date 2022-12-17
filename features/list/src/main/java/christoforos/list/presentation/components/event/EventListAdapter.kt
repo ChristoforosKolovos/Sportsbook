@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import christoforos.list.domain.models.Event
 
 class EventListAdapter(
-    val onFavoriteClicked: (event: Event) -> Unit
+    val onFavoriteClicked: (event: Event) -> Unit,
+    val onDataChanged: (data: List<Event>) -> Unit
 ) : ListAdapter<Event, EventListAdapter.ViewHolder>(EventsDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -44,6 +45,8 @@ class EventListAdapter(
             submitList(sortedEvents)
 
             notifyItemChanged(currentList.indexOf(event))
+
+            onDataChanged(sortedEvents)
 
             onFavoriteClicked(event)
         }

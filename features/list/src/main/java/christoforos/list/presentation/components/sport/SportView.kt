@@ -18,9 +18,10 @@ class SportView(
 
     private val binding: LayoutSportViewBinding
 
-    private val eventListAdapter = EventListAdapter(::favoriteClicked)
+    private val eventListAdapter = EventListAdapter(::favoriteClicked, ::dataChanged)
 
     private var onFavoriteClicked: ((event: Event) -> Unit)? = null
+    private var onDataChanged: ((data: List<Event>) -> Unit)? = null
 
     init {
         binding = LayoutSportViewBinding.inflate(LayoutInflater.from(context), this, true)
@@ -60,6 +61,10 @@ class SportView(
         onFavoriteClicked = listener
     }
 
+    override fun setOnDataChanged(listener: (data: List<Event>) -> Unit) {
+        onDataChanged = listener
+    }
+
     override fun setOnExpandClicked(action: () -> Unit) {
         binding.header.setOnClickListener {
             action()
@@ -82,6 +87,10 @@ class SportView(
 
     private fun favoriteClicked(event: Event) {
         onFavoriteClicked?.invoke(event)
+    }
+
+    private fun dataChanged(data: List<Event>) {
+        onDataChanged?.invoke(data)
     }
 
 }

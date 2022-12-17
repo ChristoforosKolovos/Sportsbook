@@ -27,7 +27,12 @@ class SportListAdapter(
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(sport: Sport) {
-            SportViewResolver(view as SportView, sport, onFavoriteClicked) {
+            SportViewResolver(
+                view as SportView,
+                sport,
+                onFavoriteClicked,
+                ::onDataChanged
+            ) {
                 onExpand(sport)
             }
         }
@@ -38,6 +43,13 @@ class SportListAdapter(
                 collapsed = !collapsed
             }
             notifyItemChanged(indexOfUpdatedItem)
+        }
+
+        private fun onDataChanged(data: List<Event>) {
+            val sportId = data.first().sportId
+            val sport = currentList.singleOrNull { it.id == sportId }
+            val sportIndex = currentList.indexOf(sport)
+            currentList[sportIndex].events = data
         }
     }
 

@@ -9,11 +9,13 @@ class SportViewResolver(
     private val view: SportViewInterface,
     private val sport: Sport,
     onFavoriteClicked: (event: Event) -> Unit,
+    onDataChanged: (data: List<Event>) -> Unit,
     onExpandClicked: () -> Unit
 ) {
 
     init {
         view.setOnFavoriteClicked(onFavoriteClicked)
+        view.setOnDataChanged(onDataChanged)
         view.setOnExpandClicked(onExpandClicked)
         view.setIcon(sportIdToResourceId(sport.id))
         setTitle()
