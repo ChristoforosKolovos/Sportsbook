@@ -25,7 +25,6 @@
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/spacing_1x"
             android:adjustViewBounds="true"
-            android:rotation="180"
             android:src="@drawable/circle"
             tools:ignore="ContentDescription" />
 
