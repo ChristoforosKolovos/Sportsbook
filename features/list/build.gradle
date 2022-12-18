@@ -29,6 +29,7 @@ dependencies {
     implementation deps.module.library.ui
     implementation deps.module.library.mvvmi
     implementation deps.module.library.api
+    implementation deps.module.library.database
 
     //test
     testImplementation deps.module.library.test.core

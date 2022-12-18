@@ -1,5 +1,6 @@
 package christoforos.common.domain.models.outcome
 
+import android.database.sqlite.SQLiteException
 import retrofit2.Response
 
 object OutcomeUtilities {
@@ -10,6 +11,15 @@ object OutcomeUtilities {
         return if (result.isSuccessful) result.body().toSuccessfulOutcome()
         else Outcome.Error.ApiError(result.message())
 
+    }
+
+
+    inline fun <T> outcomeFromSqlQuery(block: () -> T): Outcome<T> {
+        return try {
+            block().toSuccessfulOutcome()
+        } catch (e: SQLiteException) {
+            Outcome.Error.DatabaseError(e.message)
+        }
     }
 
     fun <T> T?.toSuccessfulOutcome() = Outcome.Success(this)

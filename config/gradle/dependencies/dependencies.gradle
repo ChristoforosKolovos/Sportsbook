@@ -8,6 +8,7 @@ ext.deps = [
                         'navigation': project('libraries:navigation'),
                         'mvvmi'     : project('libraries:mvvmi'),
                         'api'       : project('libraries:api'),
+                        'database'  : project('libraries:database'),
                         'common'    : project('libraries:common'),
                         'test'      : [
                                 'core' : project('libraries:test:core'),

@@ -4,7 +4,7 @@ import christoforos.common.domain.models.outcome.Outcome
 import christoforos.common.domain.models.outcome.OutcomeExtensions.onError
 import christoforos.common.domain.models.outcome.OutcomeExtensions.onSuccess
 import christoforos.common.domain.models.outcome.OutcomeUtilities.toSuccessfulOutcome
-import christoforos.list.data.SportsRepository
+import christoforos.list.data.sports.SportsRepository
 import christoforos.list.domain.models.Sport
 
 class GetSportsUseCase(private val repository: SportsRepository) {

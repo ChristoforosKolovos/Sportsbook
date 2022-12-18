@@ -1,4 +1,4 @@
-package christoforos.list.data
+package christoforos.list.data.sports
 
 import christoforos.api.SportsDto
 import christoforos.list.domain.models.Event
