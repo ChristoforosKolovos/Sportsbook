@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -61,10 +62,21 @@ class ListFragment : Fragment() {
 
         navigator = navigatorProvider.getNavigator(this)
 
+        setUpBackNavigation()
         setupRecyclerViews()
         setupSwipeToRefresh()
         setupViewListeners()
         setupObservers()
+    }
+
+    private fun setUpBackNavigation() {
+        activity?.onBackPressedDispatcher?.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    activity?.finish()
+                }
+            })
     }
 
     private fun setupViewListeners() {

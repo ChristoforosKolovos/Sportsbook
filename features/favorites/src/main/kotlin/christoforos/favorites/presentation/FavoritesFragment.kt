@@ -5,26 +5,32 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import christoforos.common.domain.models.event.Event
 import christoforos.common.presentation.components.event.EventListAdapter
 import christoforos.favorites.databinding.FragmentFavoritesBinding
+import christoforos.navigation.Navigator
+import christoforos.navigation.NavigatorProvider
+import christoforos.navigation.Target
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
 import christoforos.common.R as CommonR
 import christoforos.ui.R as UiR
 
 @AndroidEntryPoint
 class FavoritesFragment : Fragment() {
-
+    @Inject
+    lateinit var navigatorProvider: NavigatorProvider
+    private lateinit var navigator: Navigator
     private lateinit var binding: FragmentFavoritesBinding
     private val viewModel: FavoritesViewModel by viewModels()
     private val eventListAdapter = EventListAdapter(
@@ -44,9 +50,21 @@ class FavoritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        navigator = navigatorProvider.getNavigator(this)
+        setUpBackNavigation()
         setupRecyclerView()
         setupViewListeners()
         setupObservers()
+    }
+
+    private fun setUpBackNavigation() {
+        activity?.onBackPressedDispatcher?.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    navigateToList()
+                }
+            })
     }
 
     private fun setupRecyclerView() {
@@ -64,7 +82,7 @@ class FavoritesFragment : Fragment() {
 
     private fun setupViewListeners() {
         binding.back.setOnClickListener {
-            findNavController().popBackStack()
+            navigateToList()
         }
     }
 
@@ -137,4 +155,7 @@ class FavoritesFragment : Fragment() {
         viewModel.sendEvent(FavoritesContract.Event.AllItemsRemoved)
     }
 
+    private fun navigateToList() {
+        navigator.navigate(Target.List)
+    }
 }

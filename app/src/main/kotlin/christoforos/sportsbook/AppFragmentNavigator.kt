@@ -10,6 +10,7 @@ class AppFragmentNavigator : FragmentNavigator() {
         fragment?.findNavController()?.apply {
             when (target) {
                 Target.Favorites -> navigate(R.id.action_listFragment_to_favoritesFragment)
+                Target.List -> navigate(R.id.action_favoritesFragment_to_listFragment)
             }
         }
     }
