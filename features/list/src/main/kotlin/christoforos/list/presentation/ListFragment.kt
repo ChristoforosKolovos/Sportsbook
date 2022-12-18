@@ -83,12 +83,10 @@ class ListFragment : Fragment() {
 
 
     private fun setupRecyclerViews() {
-        val recyclerView = binding.resultsList
-        recyclerView.layoutManager = LinearLayoutManager(this.context)
+        binding.resultsList.layoutManager = LinearLayoutManager(this.context)
         sportListAdapter = SportListAdapter {
             viewModel.sendEvent(ListContract.Event.OnFavoriteEvent(it))
         }
-        recyclerView.adapter = sportListAdapter
     }
 
     private fun setupObservers() {
@@ -118,6 +116,7 @@ class ListFragment : Fragment() {
 
     private fun renderErrorState() {
         with(binding) {
+            loading.isVisible = false
             retry.showWithAnimation()
             error.showWithAnimation()
             noResults.isVisible = false
@@ -128,6 +127,7 @@ class ListFragment : Fragment() {
 
     private fun renderLoadingState() {
         with(binding) {
+            loading.showWithAnimation()
             retry.isVisible = false
             error.isVisible = false
             noResults.isVisible = false
@@ -138,6 +138,7 @@ class ListFragment : Fragment() {
 
     private fun renderNoResultsState() {
         with(binding) {
+            loading.isVisible = false
             retry.showWithAnimation()
             error.isVisible = false
             noResults.showWithAnimation()
@@ -148,7 +149,9 @@ class ListFragment : Fragment() {
     }
 
     private fun renderResultsState(sports: List<Sport>) {
+        binding.resultsList.adapter = sportListAdapter
         with(binding) {
+            loading.isVisible = false
             retry.isVisible = false
             error.isVisible = false
             noResults.isVisible = false

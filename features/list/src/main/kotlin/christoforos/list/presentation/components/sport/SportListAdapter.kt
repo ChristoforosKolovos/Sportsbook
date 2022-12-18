@@ -49,7 +49,7 @@ class SportListAdapter(
             val sportId = data.first().sportId
             val sport = currentList.singleOrNull { it.id == sportId }
             val sportIndex = currentList.indexOf(sport)
-            currentList[sportIndex].events = data
+            if (sportIndex >= 0) currentList[sportIndex].events = data
         }
     }
 
