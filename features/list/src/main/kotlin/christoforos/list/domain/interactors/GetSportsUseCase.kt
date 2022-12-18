@@ -1,12 +1,12 @@
 package christoforos.list.domain.interactors
 
+import christoforos.common.data.event.EventsRepository
+import christoforos.common.domain.models.event.Event
 import christoforos.common.domain.models.outcome.Outcome
 import christoforos.common.domain.models.outcome.OutcomeExtensions.onError
 import christoforos.common.domain.models.outcome.OutcomeExtensions.onSuccess
 import christoforos.common.domain.models.outcome.OutcomeUtilities.toSuccessfulOutcome
-import christoforos.list.data.event.EventsRepository
 import christoforos.list.data.sports.SportsRepository
-import christoforos.list.domain.models.Event
 import christoforos.list.domain.models.Sport
 
 class GetSportsUseCase(

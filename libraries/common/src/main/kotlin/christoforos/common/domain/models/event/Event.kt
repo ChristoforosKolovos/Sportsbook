@@ -1,4 +1,4 @@
-package christoforos.list.domain.models
+package christoforos.common.domain.models.event
 
 data class Event(
     val id: String?,

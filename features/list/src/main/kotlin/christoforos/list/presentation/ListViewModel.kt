@@ -1,13 +1,13 @@
 package christoforos.list.presentation
 
 import androidx.lifecycle.viewModelScope
+import christoforos.common.domain.interactors.favorites.RemoveFavoriteUseCase
+import christoforos.common.domain.models.event.Event
 import christoforos.common.domain.models.outcome.OutcomeExtensions.onError
 import christoforos.common.domain.models.outcome.OutcomeExtensions.onSuccess
 import christoforos.list.R
 import christoforos.list.domain.interactors.AddFavoriteUseCase
 import christoforos.list.domain.interactors.GetSportsUseCase
-import christoforos.list.domain.interactors.RemoveFavoriteUseCase
-import christoforos.list.domain.models.Event
 import christoforos.mvvmi.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

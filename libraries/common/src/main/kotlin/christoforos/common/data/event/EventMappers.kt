@@ -1,8 +1,8 @@
-package christoforos.list.data.event
+package christoforos.common.data.event
 
+import christoforos.common.domain.models.event.Event
 import christoforos.common.utils.StringConstants.EMPTY
 import christoforos.database.event.EventEntity
-import christoforos.list.domain.models.Event
 
 object EventMappers {
 

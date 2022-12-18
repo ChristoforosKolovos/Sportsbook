@@ -1,7 +1,7 @@
 package christoforos.list.presentation.components.sport
 
+import christoforos.common.domain.models.event.Event
 import christoforos.common.utils.StringConstants.DOTS
-import christoforos.list.domain.models.Event
 import christoforos.list.domain.models.Sport
 import christoforos.list.presentation.components.sport.EventIconUtils.sportIdToResourceId
 

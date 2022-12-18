@@ -1,7 +1,7 @@
 package christoforos.list.data.sports
 
 import christoforos.api.SportsDto
-import christoforos.list.domain.models.Event
+import christoforos.common.domain.models.event.Event
 import christoforos.list.domain.models.Sport
 
 object SportsMappers {

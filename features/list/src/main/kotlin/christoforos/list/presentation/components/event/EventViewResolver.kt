@@ -1,8 +1,8 @@
 package christoforos.list.presentation.components.event
 
+import christoforos.common.domain.models.event.Event
 import christoforos.common.utils.StringConstants.DOTS
 import christoforos.common.utils.StringConstants.SPACED_DASH
-import christoforos.list.domain.models.Event
 
 class EventViewResolver(
     private val view: EventViewInterface,

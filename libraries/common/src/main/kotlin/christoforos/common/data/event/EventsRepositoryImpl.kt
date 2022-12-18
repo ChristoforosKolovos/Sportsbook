@@ -1,12 +1,12 @@
-package christoforos.list.data.event
+package christoforos.common.data.event
 
+import christoforos.common.data.event.EventMappers.toEventEntity
+import christoforos.common.data.event.EventMappers.toEvents
+import christoforos.common.domain.models.event.Event
 import christoforos.common.domain.models.outcome.Outcome
 import christoforos.common.domain.models.outcome.OutcomeExtensions.mapSuccess
 import christoforos.common.domain.models.outcome.OutcomeUtilities.outcomeFromSqlQuery
 import christoforos.database.event.EventDao
-import christoforos.list.data.event.EventMappers.toEventEntity
-import christoforos.list.data.event.EventMappers.toEvents
-import christoforos.list.domain.models.Event
 
 class EventsRepositoryImpl(private val dao: EventDao) : EventsRepository {
 

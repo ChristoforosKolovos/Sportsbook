@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import christoforos.common.domain.models.event.Event
 import christoforos.list.databinding.LayoutSportViewBinding
-import christoforos.list.domain.models.Event
 import christoforos.list.presentation.components.event.EventListAdapter
 
 class SportView(

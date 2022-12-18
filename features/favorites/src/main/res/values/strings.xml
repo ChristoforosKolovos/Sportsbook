@@ -2,4 +2,5 @@
     <string name="no_results">No favorites found.</string>
     <string name="error">Something went wrong while trying to obtain favorites.</string>
     <string name="favorites">Favorites</string>
+    <string name="remove_favorite_error">Something went wrong while trying to remove favorite.</string>
 </resources>

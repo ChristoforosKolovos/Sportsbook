@@ -1,6 +1,6 @@
 package christoforos.list.presentation.components.sport
 
-import christoforos.list.domain.models.Event
+import christoforos.common.domain.models.event.Event
 
 interface SportViewInterface {
 

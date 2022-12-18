@@ -1,7 +1,7 @@
 package christoforos.list.presentation.components.event
 
 import androidx.recyclerview.widget.DiffUtil
-import christoforos.list.domain.models.Event
+import christoforos.common.domain.models.event.Event
 
 
 class EventsDiffCallback : DiffUtil.ItemCallback<Event>() {

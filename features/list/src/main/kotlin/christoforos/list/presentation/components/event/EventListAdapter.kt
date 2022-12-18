@@ -4,7 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import christoforos.list.domain.models.Event
+import christoforos.common.domain.models.event.Event
 
 class EventListAdapter(
     val onFavoriteClicked: (event: Event) -> Unit,

@@ -1,6 +1,6 @@
-package christoforos.list.domain.interactors
+package christoforos.common.domain.interactors.favorites
 
-import christoforos.list.data.event.EventsRepository
+import christoforos.common.data.event.EventsRepository
 
 class GetFavoritesUseCase(private val repository: EventsRepository) {
 
