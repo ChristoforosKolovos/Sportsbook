@@ -36,8 +36,10 @@ class FavoritesViewModel @Inject constructor(
             getSportsUseCase()
                 .onSuccess {
                     it?.let {
-                        setState {
-                            copy(screenState = FavoritesContract.ScreenState.Results(it))
+                        if (it.isEmpty()) {
+                            setState { copy(screenState = FavoritesContract.ScreenState.NoResults) }
+                        } else {
+                            setState { copy(screenState = FavoritesContract.ScreenState.Results(it)) }
                         }
                     } ?: run {
                         setState { copy(screenState = FavoritesContract.ScreenState.NoResults) }

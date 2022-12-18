@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -86,14 +87,27 @@ class FavoritesFragment : Fragment() {
     }
 
     private fun renderErrorState() {
-        //todo
+        with(binding) {
+            resultsList.isVisible = false
+            error.isVisible = true
+            noResults.isVisible = false
+        }
     }
 
     private fun renderNoResultsState() {
-        //todo
+        with(binding) {
+            resultsList.isVisible = false
+            error.isVisible = false
+            noResults.isVisible = true
+        }
     }
 
     private fun renderResultsState(events: List<Event>) {
+        with(binding) {
+            resultsList.isVisible = true
+            error.isVisible = false
+            noResults.isVisible = false
+        }
         eventListAdapter.submitList(events)
     }
 
