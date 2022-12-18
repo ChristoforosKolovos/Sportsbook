@@ -23,5 +23,6 @@ ext.versions = [
         constraint_layout    : '2.1.4',
         appcompat            : '1.5.1',
         recyclerview         : '1.2.1',
-        swiperefreshlayout   : '1.1.0'
+        swiperefreshlayout   : '1.1.0',
+        room                 : '2.4.3',
 ]

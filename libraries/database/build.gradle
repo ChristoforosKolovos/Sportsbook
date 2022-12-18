@@ -1,0 +1,21 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from: "${rootProject.projectDir}/config/gradle/build-scripts/android-library.gradle"
+
+android {
+    namespace 'christoforos.database'
+}
+
+dependencies {
+    kapt deps.di.hilt.android_compiler
+    kapt deps.androidx.room.compiler
+    implementation deps.di.hilt.android
+    implementation deps.androidx.room.runtime
+    implementation deps.androidx.room.ktx
+    implementation deps.logging.timber
+}
