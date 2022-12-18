@@ -1,5 +1,7 @@
 package christoforos.list.presentation.components.event
 
+import android.animation.Animator
+import android.animation.Animator.AnimatorListener
 import android.content.Context
 import android.os.CountDownTimer
 import android.util.AttributeSet
@@ -17,11 +19,21 @@ class EventView(
     attrs: AttributeSet?
 ) : ConstraintLayout(context, attrs), EventViewInterface {
 
+    companion object {
+        private const val ALPHA_FULL = 1f
+        private const val ALPHA_NO = 0f
+        private const val SHOW_ANIM_DURATION = 500L
+        private const val SHOW_ANIM_TRANSLATION_Y_START = -100f
+        private const val SHOW_ANIM_TRANSLATION_Y_END = -0f
+    }
+
     private val binding: LayoutEventViewBinding
     private var timer: CountDownTimer? = null
 
     init {
         binding = LayoutEventViewBinding.inflate(LayoutInflater.from(context), this, true)
+
+        initialAnimation()
     }
 
     override fun setTime(time: String) {
@@ -76,6 +88,33 @@ class EventView(
     private fun getMillisUntilTime(time: Long): Long {
         val currentTime = (System.currentTimeMillis() / 1000)
         return time - currentTime
+    }
+
+    private fun initialAnimation() {
+        translationY = SHOW_ANIM_TRANSLATION_Y_START
+        alpha = ALPHA_NO
+        animate()
+            .alpha(ALPHA_FULL)
+            .translationY(SHOW_ANIM_TRANSLATION_Y_END)
+            .setDuration(SHOW_ANIM_DURATION)
+            .setListener(object : AnimatorListener {
+                override fun onAnimationStart(animation: Animator?) {
+                }
+
+                override fun onAnimationEnd(animation: Animator?) {
+                    translationY = SHOW_ANIM_TRANSLATION_Y_END
+                    alpha = ALPHA_FULL
+                }
+
+                override fun onAnimationCancel(animation: Animator?) {
+                    translationY = SHOW_ANIM_TRANSLATION_Y_END
+                    alpha = ALPHA_FULL
+                }
+
+                override fun onAnimationRepeat(animation: Animator?) {
+                }
+            })
+            .start()
     }
 
 }

@@ -1,5 +1,6 @@
 package christoforos.list.presentation
 
+import android.animation.Animator
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -30,9 +31,9 @@ class ListFragment : Fragment() {
     companion object {
         private const val ALPHA_FULL = 1f
         private const val ALPHA_NO = 0f
-        private const val SHOW_ANIM_DURATION = 300L
-        private const val SHOW_ANIM_TRANSLATION_Y_START = -100f
-        private const val SHOW_ANIM_TRANSLATION_Y_END = -0f
+        private const val SHOW_ANIM_DURATION = 500L
+        private const val SHOW_ANIM_TRANSLATION_Y_START = 100f
+        private const val SHOW_ANIM_TRANSLATION_Y_END = 0f
     }
 
     @Inject
@@ -178,7 +179,25 @@ class ListFragment : Fragment() {
         animate()
             .alpha(ALPHA_FULL)
             .translationY(SHOW_ANIM_TRANSLATION_Y_END)
-            .setDuration(SHOW_ANIM_DURATION).start()
+            .setDuration(SHOW_ANIM_DURATION)
+            .setListener(object : Animator.AnimatorListener {
+                override fun onAnimationStart(animation: Animator?) {
+                }
+
+                override fun onAnimationEnd(animation: Animator?) {
+                    translationY = SHOW_ANIM_TRANSLATION_Y_END
+                    alpha = ALPHA_FULL
+                }
+
+                override fun onAnimationCancel(animation: Animator?) {
+                    translationY = SHOW_ANIM_TRANSLATION_Y_END
+                    alpha = ALPHA_FULL
+                }
+
+                override fun onAnimationRepeat(animation: Animator?) {
+                }
+            })
+            .start()
     }
 
 }
