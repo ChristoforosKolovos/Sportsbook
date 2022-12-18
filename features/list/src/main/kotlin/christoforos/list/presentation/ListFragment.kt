@@ -18,6 +18,7 @@ import christoforos.list.domain.models.Sport
 import christoforos.list.presentation.components.sport.SportListAdapter
 import christoforos.navigation.Navigator
 import christoforos.navigation.NavigatorProvider
+import christoforos.navigation.Target
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
@@ -69,7 +70,7 @@ class ListFragment : Fragment() {
     private fun setupViewListeners() {
         with(binding) {
             favorites.setOnClickListener {
-                //todo
+                navigator.navigate(Target.Favorites)
             }
             retry.setOnClickListener {
                 viewModel.sendEvent(ListContract.Event.GetData)

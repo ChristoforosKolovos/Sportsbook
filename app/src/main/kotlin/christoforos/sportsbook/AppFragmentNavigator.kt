@@ -6,10 +6,10 @@ import christoforos.navigation.Target
 
 class AppFragmentNavigator : FragmentNavigator() {
 
-    override fun navigate(target: Target, data: Any?) {
+    override fun navigate(target: Target) {
         fragment?.findNavController()?.apply {
             when (target) {
-                else -> {}
+                Target.Favorites -> navigate(R.id.action_listFragment_to_favoritesFragment)
             }
         }
     }

@@ -1,4 +1,7 @@
 package christoforos.navigation
 
-sealed class Target {
+sealed interface Target {
+
+    object Favorites : Target
+
 }

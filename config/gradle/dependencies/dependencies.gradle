@@ -1,7 +1,8 @@
 ext.deps = [
         'module'  : [
                 'feature': [
-                        'list'        : project('features:list'),
+                        'list'     : project('features:list'),
+                        'favorites': project('features:favorites'),
                 ],
                 'library': [
                         'ui'        : project('libraries:ui'),

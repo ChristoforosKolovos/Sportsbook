@@ -24,5 +24,6 @@ dependencies {
 
     //features
     implementation deps.module.feature.list
+    implementation deps.module.feature.favorites
 
 }

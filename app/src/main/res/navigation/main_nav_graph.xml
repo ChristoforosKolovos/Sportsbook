@@ -7,5 +7,13 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="christoforos.list.presentation.ListFragment"
-        android:label="ListFragment" />
+        android:label="ListFragment">
+        <action
+            android:id="@+id/action_listFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="christoforos.favorites.presentation.FavoritesFragment"
+        android:label="FavoritesFragment" />
 </navigation>
