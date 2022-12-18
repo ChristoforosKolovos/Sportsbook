@@ -17,15 +17,12 @@ class FavoritesViewModel @Inject constructor(
     private val getSportsUseCase: GetFavoritesUseCase,
     private val removeFavoriteUseCase: RemoveFavoriteUseCase
 ) : BaseViewModel<FavoritesContract.State, FavoritesContract.Event, FavoritesContract.Effect>(
-    FavoritesContract.State(FavoritesContract.ScreenState.Initial)
+    FavoritesContract.State(FavoritesContract.ScreenState.Initialize)
 ) {
-
-    init {
-        getFavorites()
-    }
 
     override suspend fun handleEvent(event: FavoritesContract.Event) {
         when (event) {
+            FavoritesContract.Event.Initialize -> getFavorites()
             is FavoritesContract.Event.FavoriteRemoved -> handleFavoriteRemoved(event.event)
             FavoritesContract.Event.GetData -> getFavorites()
             FavoritesContract.Event.AllItemsRemoved ->

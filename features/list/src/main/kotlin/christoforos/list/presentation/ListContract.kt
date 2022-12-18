@@ -15,6 +15,7 @@ object ListContract {
     }
 
     sealed interface Event : UiEvent {
+        object Initialize : Event
         data class OnFavoriteEvent(val event: SportEvent) : Event
         object GetData : Event
     }
@@ -25,6 +26,7 @@ object ListContract {
     ) : UiState
 
     sealed interface ScreenState {
+        object Initialize : ScreenState
         object Loading : ScreenState
         data class Results(val sports: List<Sport>) : ScreenState
         object NoResults : ScreenState

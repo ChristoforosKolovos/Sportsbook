@@ -19,15 +19,12 @@ class ListViewModel @Inject constructor(
     private val addFavoriteUseCase: AddFavoriteUseCase,
     private val removeFavoriteUseCase: RemoveFavoriteUseCase
 ) : BaseViewModel<ListContract.State, ListContract.Event, ListContract.Effect>(
-    ListContract.State(emptyList(), ListContract.ScreenState.Loading)
+    ListContract.State(emptyList(), ListContract.ScreenState.Initialize)
 ) {
-
-    init {
-        getSports()
-    }
 
     override suspend fun handleEvent(event: ListContract.Event) {
         when (event) {
+            ListContract.Event.Initialize -> getSports()
             is ListContract.Event.OnFavoriteEvent -> handleFavoriteEventRequest(event.event)
             ListContract.Event.GetData -> getSports()
         }

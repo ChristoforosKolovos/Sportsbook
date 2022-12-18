@@ -119,6 +119,8 @@ class ListFragment : Fragment() {
 
     private fun handleScreenState(state: ListContract.ScreenState) {
         when (state) {
+            ListContract.ScreenState.Initialize ->
+                viewModel.sendEvent(ListContract.Event.Initialize)
             ListContract.ScreenState.Error -> renderErrorState()
             ListContract.ScreenState.Loading -> renderLoadingState()
             ListContract.ScreenState.NoResults -> renderNoResultsState()

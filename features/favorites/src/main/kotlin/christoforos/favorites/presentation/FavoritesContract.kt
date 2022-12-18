@@ -14,6 +14,7 @@ object FavoritesContract {
     }
 
     sealed interface Event : UiEvent {
+        object Initialize : Event
         data class FavoriteRemoved(val event: SportEvent) : Event
         object GetData : Event
         object AllItemsRemoved : Event
@@ -24,7 +25,7 @@ object FavoritesContract {
     ) : UiState
 
     sealed interface ScreenState {
-        object Initial : ScreenState
+        object Initialize : ScreenState
         data class Results(val events: List<SportEvent>) : ScreenState
         object NoResults : ScreenState
         object Error : ScreenState

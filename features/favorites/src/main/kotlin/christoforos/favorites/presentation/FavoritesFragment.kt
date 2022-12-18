@@ -98,7 +98,8 @@ class FavoritesFragment : Fragment() {
 
     private fun handleScreenState(state: FavoritesContract.ScreenState) {
         when (state) {
-            FavoritesContract.ScreenState.Initial -> Unit
+            FavoritesContract.ScreenState.Initialize ->
+                viewModel.sendEvent(FavoritesContract.Event.Initialize)
             FavoritesContract.ScreenState.Error -> renderErrorState()
             FavoritesContract.ScreenState.NoResults -> renderNoResultsState()
             is FavoritesContract.ScreenState.Results -> renderResultsState(state.events)
