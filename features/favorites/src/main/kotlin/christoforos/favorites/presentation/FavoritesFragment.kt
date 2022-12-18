@@ -29,7 +29,8 @@ class FavoritesFragment : Fragment() {
     private val viewModel: FavoritesViewModel by viewModels()
     private val eventListAdapter = EventListAdapter(
         matchParentWidth = true,
-        onFavoriteClicked = ::favoriteClicked
+        onFavoriteClicked = ::favoriteClicked,
+        onAllItemsRemoved = ::onAllItemsRemoved
     )
 
     override fun onCreateView(
@@ -114,7 +115,7 @@ class FavoritesFragment : Fragment() {
     private fun handleEffect(effect: FavoritesContract.Effect) {
         when (effect) {
             is FavoritesContract.Effect.ShowDialog -> showDialog(getString(effect.stringResourceId))
-            is FavoritesContract.Effect.RemoveFavoriteFromList -> Unit //todo
+            is FavoritesContract.Effect.RemoveFavoriteFromList -> eventListAdapter.remove(effect.event)
         }
     }
 
@@ -130,6 +131,10 @@ class FavoritesFragment : Fragment() {
 
     private fun favoriteClicked(event: Event) {
         viewModel.sendEvent(FavoritesContract.Event.FavoriteRemoved(event))
+    }
+
+    private fun onAllItemsRemoved() {
+        viewModel.sendEvent(FavoritesContract.Event.AllItemsRemoved)
     }
 
 }

@@ -28,6 +28,8 @@ class FavoritesViewModel @Inject constructor(
         when (event) {
             is FavoritesContract.Event.FavoriteRemoved -> handleFavoriteRemoved(event.event)
             FavoritesContract.Event.GetData -> getFavorites()
+            FavoritesContract.Event.AllItemsRemoved ->
+                setState { copy(screenState = FavoritesContract.ScreenState.NoResults) }
         }
     }
 

@@ -10,7 +10,8 @@ class EventListAdapter(
     val onFavoriteClicked: (event: Event) -> Unit,
     val matchParentWidth: Boolean = false,
     val sortDataOnFavorite: Boolean = false,
-    val onDataChanged: (data: List<Event>) -> Unit = {}
+    val onDataChanged: (data: List<Event>) -> Unit = {},
+    val onAllItemsRemoved: () -> Unit = {}
 ) : ListAdapter<Event, EventListAdapter.ViewHolder>(EventsDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,6 +25,17 @@ class EventListAdapter(
     }
 
     override fun getItemCount() = currentList.size
+
+    fun remove(event: Event) {
+        val eventIndex = currentList.indexOf(event)
+        if (eventIndex >= 0) {
+            val list = currentList.toMutableList()
+            list.removeAt(eventIndex)
+            submitList(list)
+
+            if (list.isEmpty()) onAllItemsRemoved()
+        }
+    }
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
