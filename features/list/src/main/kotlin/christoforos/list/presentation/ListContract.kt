@@ -11,6 +11,7 @@ object ListContract {
 
     sealed interface Effect : UiEffect {
         data class ShowDialog(@StringRes val stringResourceId: Int) : Effect
+        object AddedToFavorites : Effect
     }
 
     sealed interface Event : UiEvent {

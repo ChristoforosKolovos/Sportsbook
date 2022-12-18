@@ -1,6 +1,7 @@
 package christoforos.list.presentation
 
 import android.animation.Animator
+import android.animation.Animator.AnimatorListener
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -34,6 +35,9 @@ class ListFragment : Fragment() {
         private const val SHOW_ANIM_DURATION = 500L
         private const val SHOW_ANIM_TRANSLATION_Y_START = 100f
         private const val SHOW_ANIM_TRANSLATION_Y_END = 0f
+        private const val FAVORITE_ANIM_DURATION = 500L
+        private const val FAVORITE_ANIM_SCALE = 1.75f
+        private const val FAVORITE_NORMAL_SCALE = 1f
     }
 
     @Inject
@@ -112,6 +116,7 @@ class ListFragment : Fragment() {
     private fun handleEffect(effect: ListContract.Effect) {
         when (effect) {
             is ListContract.Effect.ShowDialog -> showDialog(getString(effect.stringResourceId))
+            ListContract.Effect.AddedToFavorites -> flashFavorites()
         }
     }
 
@@ -169,6 +174,37 @@ class ListFragment : Fragment() {
             setNeutralButton(UI_R.string.ok, null)
             create()
             show()
+        }
+    }
+
+    private fun flashFavorites() {
+        with(binding.favorites) {
+            setImageResource(UI_R.drawable.topbar_favorite_highlight)
+            scaleX = FAVORITE_ANIM_SCALE
+            scaleY = FAVORITE_ANIM_SCALE
+            animate()
+                .scaleX(FAVORITE_NORMAL_SCALE)
+                .scaleY(FAVORITE_NORMAL_SCALE)
+                .setDuration(FAVORITE_ANIM_DURATION)
+                .setListener(object : AnimatorListener {
+                    override fun onAnimationStart(animation: Animator?) {
+
+                    }
+
+                    override fun onAnimationEnd(animation: Animator?) {
+                        setImageResource(UI_R.drawable.topbar_favorite_selector)
+                        scaleX = FAVORITE_NORMAL_SCALE
+                        scaleY = FAVORITE_NORMAL_SCALE
+                    }
+
+                    override fun onAnimationCancel(animation: Animator?) {
+                    }
+
+                    override fun onAnimationRepeat(animation: Animator?) {
+                    }
+
+                })
+                .start()
         }
     }
 

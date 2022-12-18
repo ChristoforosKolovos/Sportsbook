@@ -36,8 +36,11 @@ object ListModule {
         EventsRepositoryImpl(eventsDao)
 
     @Provides
-    fun provideGetSportsUseCase(sportsRepository: SportsRepository): GetSportsUseCase =
-        GetSportsUseCase(sportsRepository)
+    fun provideGetSportsUseCase(
+        sportsRepository: SportsRepository,
+        eventsRepository: EventsRepository
+    ): GetSportsUseCase =
+        GetSportsUseCase(sportsRepository, eventsRepository)
 
     @Provides
     fun provideSportsRepository(sportsApi: SportsApi): SportsRepository =

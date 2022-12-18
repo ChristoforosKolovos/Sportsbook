@@ -3,7 +3,10 @@ package christoforos.list.presentation
 import androidx.lifecycle.viewModelScope
 import christoforos.common.domain.models.outcome.OutcomeExtensions.onError
 import christoforos.common.domain.models.outcome.OutcomeExtensions.onSuccess
+import christoforos.list.R
+import christoforos.list.domain.interactors.AddFavoriteUseCase
 import christoforos.list.domain.interactors.GetSportsUseCase
+import christoforos.list.domain.interactors.RemoveFavoriteUseCase
 import christoforos.list.domain.models.Event
 import christoforos.mvvmi.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,7 +15,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ListViewModel @Inject constructor(
-    private val getSportsUseCase: GetSportsUseCase
+    private val getSportsUseCase: GetSportsUseCase,
+    private val addFavoriteUseCase: AddFavoriteUseCase,
+    private val removeFavoriteUseCase: RemoveFavoriteUseCase
 ) : BaseViewModel<ListContract.State, ListContract.Event, ListContract.Effect>(
     ListContract.State(emptyList(), ListContract.ScreenState.Loading)
 ) {
@@ -65,7 +70,22 @@ class ListViewModel @Inject constructor(
     }
 
     private fun handleFavoriteEventRequest(event: Event) {
-        //todo
+
+        viewModelScope.launch {
+            if (event.favorite) {
+                addFavoriteUseCase(event)
+                    .onSuccess {
+                        setEffect { ListContract.Effect.AddedToFavorites }
+                    }.onError {
+                        setEffect { ListContract.Effect.ShowDialog(R.string.favorite_error) }
+                    }
+            } else {
+                removeFavoriteUseCase(event)
+                    .onError {
+                        setEffect { ListContract.Effect.ShowDialog(R.string.favorite_remove_error) }
+                    }
+            }
+        }
     }
 
 }
