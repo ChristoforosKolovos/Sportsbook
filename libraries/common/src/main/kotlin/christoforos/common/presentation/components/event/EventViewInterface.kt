@@ -1,4 +1,4 @@
-package christoforos.list.presentation.components.event
+package christoforos.common.presentation.components.event
 
 interface EventViewInterface {
     fun setTime(time: String)

@@ -8,8 +8,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import christoforos.common.domain.models.event.Event
+import christoforos.common.presentation.components.event.EventListAdapter
 import christoforos.list.databinding.LayoutSportViewBinding
-import christoforos.list.presentation.components.event.EventListAdapter
 
 class SportView(
     context: Context,
@@ -18,7 +18,7 @@ class SportView(
 
     private val binding: LayoutSportViewBinding
 
-    private val eventListAdapter = EventListAdapter(::favoriteClicked, ::dataChanged)
+    private val eventListAdapter = EventListAdapter(::favoriteClicked, true, ::dataChanged)
 
     private var onFavoriteClicked: ((event: Event) -> Unit)? = null
     private var onDataChanged: ((data: List<Event>) -> Unit)? = null

@@ -1,4 +1,4 @@
-package christoforos.list.presentation.components.event
+package christoforos.common.presentation.components.event
 
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +8,8 @@ import christoforos.common.domain.models.event.Event
 
 class EventListAdapter(
     val onFavoriteClicked: (event: Event) -> Unit,
-    val onDataChanged: (data: List<Event>) -> Unit
+    val sortDataOnFavorite: Boolean = false,
+    val onDataChanged: (data: List<Event>) -> Unit = {}
 ) : ListAdapter<Event, EventListAdapter.ViewHolder>(EventsDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -38,16 +39,15 @@ class EventListAdapter(
                 it.favorite = !it.favorite
             }
 
-            val sortedEvents = currentList
-                .sortedByDescending { it.timestamp }
-                .sortedByDescending { it.favorite }
-
-            submitList(sortedEvents)
+            if (sortDataOnFavorite) {
+                val sortedEvents = currentList
+                    .sortedByDescending { it.timestamp }
+                    .sortedByDescending { it.favorite }
+                submitList(sortedEvents)
+                onDataChanged(sortedEvents)
+            }
 
             notifyItemChanged(currentList.indexOf(event))
-
-            onDataChanged(sortedEvents)
-
             onFavoriteClicked(event)
         }
     }

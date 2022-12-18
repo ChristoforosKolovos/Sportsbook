@@ -1,4 +1,4 @@
-package christoforos.list.presentation.components.event
+package christoforos.common.presentation.components.event
 
 import android.animation.Animator
 import android.animation.Animator.AnimatorListener
@@ -7,9 +7,9 @@ import android.os.CountDownTimer
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+import christoforos.common.R
+import christoforos.common.databinding.LayoutEventViewBinding
 import christoforos.common.utils.DateFormatConstants.TIME_FORMAT
-import christoforos.list.R
-import christoforos.list.databinding.LayoutEventViewBinding
 import java.text.SimpleDateFormat
 import java.util.*
 import christoforos.ui.R as UI_R

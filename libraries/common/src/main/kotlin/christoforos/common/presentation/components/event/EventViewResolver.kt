@@ -1,4 +1,4 @@
-package christoforos.list.presentation.components.event
+package christoforos.common.presentation.components.event
 
 import christoforos.common.domain.models.event.Event
 import christoforos.common.utils.StringConstants.DOTS

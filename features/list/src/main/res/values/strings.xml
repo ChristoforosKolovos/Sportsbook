@@ -2,7 +2,6 @@
     <string name="error">An error occurred while fetching data. Please check your internet connection and try again.</string>
     <string name="no_results">Data not found, try again later.</string>
     <string name="no_events">There are no events.</string>
-    <string name="finished">Finished</string>
     <string name="try_again">Try again</string>
     <string name="loading">Loading</string>
     <string name="favorite_error">Something went wrong. Favorite could not be saved.</string>

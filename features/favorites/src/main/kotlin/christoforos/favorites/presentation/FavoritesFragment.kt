@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import christoforos.common.domain.models.event.Event
+import christoforos.common.presentation.components.event.EventListAdapter
 import christoforos.favorites.databinding.FragmentFavoritesBinding
 import christoforos.ui.R
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,6 +25,7 @@ class FavoritesFragment : Fragment() {
 
     private lateinit var binding: FragmentFavoritesBinding
     private val viewModel: FavoritesViewModel by viewModels()
+    private val eventListAdapter = EventListAdapter(::favoriteClicked)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,8 +38,18 @@ class FavoritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupRecyclerView()
         setupViewListeners()
         setupObservers()
+    }
+
+    private fun setupRecyclerView() {
+        val recyclerView = binding.resultsList
+        with(recyclerView) {
+            layoutManager =
+                GridLayoutManager(this.context, 2)
+            adapter = eventListAdapter
+        }
     }
 
     private fun setupViewListeners() {
@@ -73,7 +86,7 @@ class FavoritesFragment : Fragment() {
     }
 
     private fun renderResultsState(events: List<Event>) {
-        //todo
+        eventListAdapter.submitList(events)
     }
 
     private fun handleEffect(effect: FavoritesContract.Effect) {
@@ -91,6 +104,10 @@ class FavoritesFragment : Fragment() {
             create()
             show()
         }
+    }
+
+    private fun favoriteClicked(event: Event) {
+        viewModel.sendEvent(FavoritesContract.Event.FavoriteRemoved(event))
     }
 
 }
