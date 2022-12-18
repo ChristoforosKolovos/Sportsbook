@@ -8,6 +8,7 @@ import christoforos.common.domain.models.event.Event
 
 class EventListAdapter(
     val onFavoriteClicked: (event: Event) -> Unit,
+    val matchParentWidth: Boolean = false,
     val sortDataOnFavorite: Boolean = false,
     val onDataChanged: (data: List<Event>) -> Unit = {}
 ) : ListAdapter<Event, EventListAdapter.ViewHolder>(EventsDiffCallback()) {
@@ -27,7 +28,7 @@ class EventListAdapter(
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(event: Event) {
-            EventViewResolver(view as EventView, event) {
+            EventViewResolver(view as EventView, event, matchParentWidth) {
                 onFavorite(event)
             }
         }

@@ -85,6 +85,20 @@ class EventView(
         }
     }
 
+    override fun setMatchParentWidth(matchParentWidth: Boolean) {
+        val lp = if (matchParentWidth)
+            LayoutParams(
+                LayoutParams.MATCH_PARENT,
+                LayoutParams.WRAP_CONTENT
+            )
+        else
+            LayoutParams(
+                resources.getDimensionPixelSize(R.dimen.event_container_width),
+                LayoutParams.WRAP_CONTENT
+            )
+        this.layoutParams = lp
+    }
+
     private fun getMillisUntilTime(time: Long): Long {
         val currentTime = (System.currentTimeMillis() / 1000)
         return time - currentTime

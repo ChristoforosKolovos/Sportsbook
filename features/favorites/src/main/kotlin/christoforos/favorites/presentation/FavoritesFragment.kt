@@ -14,18 +14,22 @@ import androidx.recyclerview.widget.GridLayoutManager
 import christoforos.common.domain.models.event.Event
 import christoforos.common.presentation.components.event.EventListAdapter
 import christoforos.favorites.databinding.FragmentFavoritesBinding
-import christoforos.ui.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
+import christoforos.common.R as CommonR
+import christoforos.ui.R as UiR
 
 @AndroidEntryPoint
 class FavoritesFragment : Fragment() {
 
     private lateinit var binding: FragmentFavoritesBinding
     private val viewModel: FavoritesViewModel by viewModels()
-    private val eventListAdapter = EventListAdapter(::favoriteClicked)
+    private val eventListAdapter = EventListAdapter(
+        matchParentWidth = true,
+        onFavoriteClicked = ::favoriteClicked
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,9 +49,13 @@ class FavoritesFragment : Fragment() {
 
     private fun setupRecyclerView() {
         val recyclerView = binding.resultsList
+        val screenWidth = resources.displayMetrics.widthPixels
+        val eventItemWidth = resources.getDimensionPixelSize(CommonR.dimen.event_container_width)
+        val columns = screenWidth / eventItemWidth
+
         with(recyclerView) {
             layoutManager =
-                GridLayoutManager(this.context, 2)
+                GridLayoutManager(this.context, columns)
             adapter = eventListAdapter
         }
     }
@@ -100,7 +108,7 @@ class FavoritesFragment : Fragment() {
         val safeContext: Context = this.context ?: return
         with(AlertDialog.Builder(safeContext)) {
             setMessage(text)
-            setNeutralButton(R.string.ok, null)
+            setNeutralButton(UiR.string.ok, null)
             create()
             show()
         }

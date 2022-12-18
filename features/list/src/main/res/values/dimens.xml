@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="event_container_width">96dp</dimen>
     <dimen name="arrow_size">26dp</dimen>
     <dimen name="icon_size">20dp</dimen>
-    <dimen name="favorite_size">30dp</dimen>
     <dimen name="logo_size">35dp</dimen>
     <dimen name="retry_icon_size">20dp</dimen>
     <dimen name="retry_button_stroke_width">1dp</dimen>

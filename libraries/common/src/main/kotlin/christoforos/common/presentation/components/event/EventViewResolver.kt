@@ -7,10 +7,12 @@ import christoforos.common.utils.StringConstants.SPACED_DASH
 class EventViewResolver(
     private val view: EventViewInterface,
     private val event: Event,
+    matchParentWidth: Boolean,
     onFavoriteClicked: () -> Unit
 ) {
 
     init {
+        view.setMatchParentWidth(matchParentWidth)
         view.setFavorite(event.favorite)
         view.setOnFavoriteClicked(onFavoriteClicked)
         setTime()

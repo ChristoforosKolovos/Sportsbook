@@ -7,7 +7,9 @@
     android:paddingLeft="@dimen/spacing_0_5x"
     android:paddingTop="@dimen/spacing_2x"
     android:paddingRight="@dimen/spacing_0_5x"
-    android:paddingBottom="@dimen/spacing_2x">
+    android:paddingBottom="@dimen/spacing_2x"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
 
     <TextView
         android:id="@+id/time"

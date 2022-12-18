@@ -12,4 +12,6 @@ interface EventViewInterface {
     fun setOnFavoriteClicked(action: () -> Unit)
 
     fun setFavorite(favorite: Boolean)
+
+    fun setMatchParentWidth(matchParentWidth: Boolean)
 }

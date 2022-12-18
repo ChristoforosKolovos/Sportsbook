@@ -18,7 +18,12 @@ class SportView(
 
     private val binding: LayoutSportViewBinding
 
-    private val eventListAdapter = EventListAdapter(::favoriteClicked, true, ::dataChanged)
+    private val eventListAdapter = EventListAdapter(
+        onFavoriteClicked = ::favoriteClicked,
+        matchParentWidth = false,
+        sortDataOnFavorite = true,
+        onDataChanged = ::dataChanged
+    )
 
     private var onFavoriteClicked: ((event: Event) -> Unit)? = null
     private var onDataChanged: ((data: List<Event>) -> Unit)? = null
